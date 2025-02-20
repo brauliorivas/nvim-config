@@ -34,7 +34,7 @@ return {
 		-- Customize formatters
 		formatters = {
 			djlint = {
-				args = {  "--reformat", "-" },
+				args = {  "--reformat", "--indent", "2", "-" },
 			},
 		},
 	},
