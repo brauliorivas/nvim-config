@@ -39,4 +39,13 @@ return {
 		end,
 	},
 	{ "wakatime/vim-wakatime", lazy = false },
+	{
+		"nvim-tree/nvim-web-devicons",
+	},
+	{
+		"mbbill/undotree",
+		config = function()
+			vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle)
+		end,
+	},
 }
