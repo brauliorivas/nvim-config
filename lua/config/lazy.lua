@@ -33,3 +33,11 @@ require("lazy").setup({
   -- automatically check for plugin updates
   checker = { enabled = true },
 })
+
+require("lualine").setup {
+	sections = {
+		lualine_c = {{
+			'filename', path = 1
+		}}
+	}
+}
