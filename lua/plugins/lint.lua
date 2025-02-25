@@ -18,6 +18,7 @@ return {
 			local lint = require("lint")
 			lint.linters_by_ft = {
 				htmldjango = { "djlint" },
+				clojure = { "clj-kondo" },
 			}
 
 			local djlint = lint.linters.djlint

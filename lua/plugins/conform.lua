@@ -23,18 +23,18 @@ return {
 			python = { "black" },
 			javascript = { "prettier", stop_after_first = true },
 			c = { "clang-format15" },
-			htmldjango = { "djlint"}
+			htmldjango = { "djlint" },
+			clojure = { "cljfmt" },
 		},
 		-- Set default options
 		default_format_opts = {
 			lsp_format = "fallback",
 		},
 		-- Set up format-on-save
-		format_on_save = { timeout_ms = 500, lsp_format="fallback" },
 		-- Customize formatters
 		formatters = {
 			djlint = {
-				args = {  "--reformat", "--indent", "2", "-" },
+				args = { "--reformat", "--indent", "2", "-" },
 			},
 		},
 	},
