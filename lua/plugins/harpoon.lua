@@ -1,63 +1,35 @@
 return {
-	{
-		{
-			"ThePrimeagen/harpoon",
-			branch = "harpoon2",
-			dependencies = { "nvim-lua/plenary.nvim" },
-			config = function()
-				local harpoon = require("harpoon")
+	"MeanderingProgrammer/harpoon-core.nvim",
+	config = function()
+		require("harpoon-core").setup({
+			default_action = nil,
+			delete_confirmation = false,
+		})
+		require("telescope").load_extension("harpoon-core")
 
-				-- REQUIRED
-				harpoon:setup()
-				-- REQUIRED
-
-				-- basic telescope configuration
-				local conf = require("telescope.config").values
-				local function toggle_telescope(harpoon_files)
-					local file_paths = {}
-					for _, item in ipairs(harpoon_files.items) do
-						table.insert(file_paths, item.value)
-					end
-
-					require("telescope.pickers")
-						.new({}, {
-							prompt_title = "Harpoon",
-							finder = require("telescope.finders").new_table({
-								results = file_paths,
-							}),
-							previewer = conf.file_previewer({}),
-							sorter = conf.generic_sorter({}),
-						})
-						:find()
-				end
-
-				vim.keymap.set("n", "<leader>a", function()
-					harpoon:list():add()
-				end)
-				vim.keymap.set("n", "<C-e>", function()
-					toggle_telescope(harpoon:list())
-				end, { desc = "Open harpoon window" })
-				vim.keymap.set("n", "<C-h>", function()
-					harpoon:list():select(1)
-				end)
-				vim.keymap.set("n", "<C-t>", function()
-					harpoon:list():select(2)
-				end)
-				vim.keymap.set("n", "<C-n>", function()
-					harpoon:list():select(3)
-				end)
-				vim.keymap.set("n", "<C-s>", function()
-					harpoon:list():select(4)
-				end)
-
-				-- Toggle previous & next buffers stored within Harpoon list
-				vim.keymap.set("n", "<C-m>", function()
-					harpoon:list():prev()
-				end)
-				vim.keymap.set("n", "<C-q>", function()
-					harpoon:list():next()
-				end)
-			end,
-		},
-	},
+		---@param lhs string
+		---@param rhs string|function
+		---@param desc string
+		local function map(lhs, rhs, desc)
+			vim.keymap.set("n", lhs, rhs, { desc = desc })
+		end
+		local mark = require("harpoon-core.mark")
+		local ui = require("harpoon-core.ui")
+		for i = 1, 9 do
+			map(string.format("<leader>%d", i), function()
+				ui.nav_file(i)
+			end, string.format("Harpoon open file %d", i))
+		end
+		map("<C-h>", function() ui.nav_file(1) end, "Go to first file")
+		map("<C-t>", function() ui.nav_file(2) end, "Go to second file")
+		map("<C-n>", function() ui.nav_file(3) end, "Go to third file")
+		map("<C-s>", function() ui.nav_file(4) end, "Go to fourth file")
+		map("<leader>0", function() ui.nav_file(10) end, "Go to fourth file")
+		map("<leader>a", mark.add_file, "Add current file")
+		map("<leader>hr", mark.rm_file, "Remove current file")
+		map("<leader>hu", ui.toggle_quick_menu, "Toggle UI")
+		map("<leader>hn", ui.nav_next, "Next file")
+		map("<leader>hp", ui.nav_prev, "Previous file")
+		map("<C-e>", "<cmd>Telescope harpoon-core marks<cr>", "Telescope menu")
+	end,
 }
