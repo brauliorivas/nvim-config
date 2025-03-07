@@ -19,6 +19,7 @@ return {
 			lint.linters_by_ft = {
 				htmldjango = { "djlint" },
 				clojure = { "clj-kondo" },
+				cpp = { "clangtidy" },
 			}
 
 			local djlint = lint.linters.djlint
