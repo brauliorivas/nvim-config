@@ -20,6 +20,8 @@ return {
 				htmldjango = { "djlint" },
 				clojure = { "clj-kondo" },
 				cpp = { "clangtidy" },
+				javascript = { "eslint" },
+				javascriptreact = { "eslint" }
 			}
 
 			local djlint = lint.linters.djlint
