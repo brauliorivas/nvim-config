@@ -24,7 +24,7 @@ return {
 		map("<C-t>", function() ui.nav_file(2) end, "Go to second file")
 		map("<C-n>", function() ui.nav_file(3) end, "Go to third file")
 		map("<C-s>", function() ui.nav_file(4) end, "Go to fourth file")
-		map("<leader>0", function() ui.nav_file(10) end, "Go to fourth file")
+		map("<leader>0", function() ui.nav_file(10) end, "Go to tenth file")
 		map("<leader>a", mark.add_file, "Add current file")
 		map("<leader>hr", mark.rm_file, "Remove current file")
 		map("<leader>hu", ui.toggle_quick_menu, "Toggle UI")
