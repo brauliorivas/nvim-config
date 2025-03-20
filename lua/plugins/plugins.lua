@@ -48,4 +48,8 @@ return {
 			vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle)
 		end,
 	},
+	{
+		"HiPhish/rainbow-delimiters.nvim",
+	},
+	{ "echasnovski/mini.indentscope", version = "*" },
 }
