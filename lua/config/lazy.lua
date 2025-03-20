@@ -43,7 +43,7 @@ require("lualine").setup {
 }
 
 require("toggleterm").setup{
-    open_mapping = [[<S-t>]],
+    open_mapping = [[<M-t>]],
 }
 
 function _G.set_terminal_keymaps()
