@@ -30,3 +30,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		remap("n", "gs", vim.lsp.buf.signature_help, { buffer = args.buf })
 	end,
 })
+
+remap("n", "<leader>dn", vim.diagnostic.goto_next)
+remap("n", "<leader>dp", vim.diagnostic.goto_prev)
