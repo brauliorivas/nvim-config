@@ -60,15 +60,6 @@ end
 
 vim.cmd("autocmd! TermOpen term://* lua set_terminal_keymaps()")
 
--- local Terminal  = require('toggleterm.terminal').Terminal
--- local lazygit = Terminal:new({ cmd = "lazygit", hidden = true })
---
--- function _lazygit_toggle()
---   lazygit:toggle()
--- end
-
-vim.api.nvim_set_keymap("n", "<leader><leader>g", "<cmd>lua _lazygit_toggle()<CR>", { noremap = true, silent = true })
-
 require("mini.indentscope").setup()
 
 require("actions-preview").setup({
@@ -192,3 +183,71 @@ vim.keymap.set("n", "<Leader>ds", function()
 	local widgets = require("dap.ui.widgets")
 	widgets.centered_float(widgets.scopes)
 end)
+
+-- GIT
+require("gitsigns").setup({
+	signs = {
+		add = { text = "+" },
+		change = { text = "~" },
+		delete = { text = "_" },
+		topdelete = { text = "‾" },
+		changedelete = { text = "~" },
+	},
+	on_attach = function(bufnr)
+		vim.keymap.set(
+			"n",
+			"<leader>hp",
+			require("gitsigns").preview_hunk,
+			{ buffer = bufnr, desc = "Preview git hunk" }
+		)
+
+		-- don't override the built-in and fugitive keymaps
+		local gs = package.loaded.gitsigns
+
+		vim.keymap.set({ "n", "v" }, "]h", function()
+			if vim.wo.diff then
+				return "]h"
+			end
+			vim.schedule(function()
+				gs.next_hunk()
+			end)
+			return "<Ignore>"
+		end, { expr = true, buffer = bufnr, desc = "Goto next hunk" })
+
+		vim.keymap.set({ "n", "v" }, "[h", function()
+			if vim.wo.diff then
+				return "[h"
+			end
+			vim.schedule(function()
+				gs.prev_hunk()
+			end)
+			return "<Ignore>"
+		end, { expr = true, buffer = bufnr, desc = "Goto prev hunk" })
+
+		vim.keymap.set("n", "<leader>gb", function()
+			gs.blame_line({ full = true })
+		end, { buffer = bufnr, desc = "Preview git blame" })
+	end,
+})
+
+local builtin = require("telescope.builtin")
+vim.keymap.set("n", "<leader>ff", builtin.find_files, { desc = "Telescope find files" })
+vim.keymap.set("n", "<leader>fg", builtin.live_grep, { desc = "Telescope live grep" })
+vim.keymap.set("n", "<leader>fb", builtin.buffers, { desc = "Telescope buffers" })
+vim.keymap.set("n", "<leader>gs", builtin.git_status, { desc = "Telescope buffers" })
+vim.keymap.set("n", "<leader>fh", builtin.help_tags, { desc = "Telescope help tags" })
+
+require("telescope").setup({
+	extensions = {
+		fzf = {
+			fuzzy = true, -- false will only do exact matching
+			override_generic_sorter = true, -- override the generic sorter
+			override_file_sorter = true, -- override the file sorter
+			case_mode = "smart_case", -- or "ignore_case" or "respect_case"
+			-- the default case_mode is "smart_case"
+		},
+	},
+})
+-- To get fzf loaded and working with telescope, you need to call
+-- load_extension, somewhere after setup function:
+require("telescope").load_extension("fzf")
