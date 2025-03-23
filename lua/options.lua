@@ -9,9 +9,9 @@ vim.o.mouse = ''
 vim.o.scrolloff = 6
 vim.o.guicursor = 'i-c-ci-cr-r:blinkon1'
 
-vim.o.tabstop = 4
-vim.o.softtabstop = 4
-vim.o.shiftwidth = 4
+vim.o.tabstop = 2
+vim.o.shiftwidth = 2
+vim.o.softtabstop = 0
 vim.o.expandtab = true
 vim.o.smartindent = true
 vim.o.conceallevel = 1

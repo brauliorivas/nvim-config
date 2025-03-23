@@ -246,3 +246,26 @@ require('telescope').setup({
 -- To get fzf loaded and working with telescope, you need to call
 -- load_extension, somewhere after setup function:
 require('telescope').load_extension('fzf')
+
+require('gitsigns').setup({
+  current_line_blame = true,
+})
+
+local neogit = require('neogit')
+neogit.setup()
+
+vim.keymap.set('n', '<leader>gs', neogit.open, { desc = 'Open neogit' })
+vim.keymap.set('n', '<leader>gp', ':Neogit pull<CR>', { desc = 'Open neogit', silent = true, noremap = true })
+vim.keymap.set('n', '<leader>gB', ':Telescope git_branches<CR>', { desc = 'Open neogit', silent = true, noremap = true })
+vim.keymap.set('n', '<leader>bh', ':G blame<CR>', { desc = 'Open neogit', silent = true, noremap = true })
+
+local diffview_open = function ()
+	vim.cmd("DiffviewOpen")
+end
+
+local diffview_close = function ()
+	vim.cmd("DiffviewClose")
+end
+
+vim.keymap.set('n', '<leader>dfo', diffview_open, { desc = 'Open default diffview' })
+vim.keymap.set('n', '<leader>dfl', diffview_close, { desc = 'Open default diffview' })
