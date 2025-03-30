@@ -82,4 +82,16 @@ return {
     },
     version = '^1.0.0', -- optional: only update when a new 1.x version is released
   },
+  {
+    'neovim/nvim-lspconfig',
+  },
+  {
+    'dgagn/diagflow.nvim',
+    event = 'LspAttach', -- This is what I use personnally and it works great
+    opts = {
+      update_event = { 'DiagnosticChanged' },
+      show_borders = true,
+      scope = 'line',
+    },
+  },
 }
