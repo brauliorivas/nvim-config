@@ -1,5 +1,5 @@
 vim.lsp.start({
-	name = "jedi-language-server",
+	name = "pylsp",
 	cmd = { "pylsp" },
 	root_dir = vim.fs.dirname(
 		vim.fs.find(
