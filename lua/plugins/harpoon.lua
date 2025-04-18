@@ -28,8 +28,8 @@ return {
 		map("<leader>a", mark.add_file, "Add current file")
 		map("<leader>hr", mark.rm_file, "Remove current file")
 		map("<leader>hu", ui.toggle_quick_menu, "Toggle UI")
-		map("<leader>hn", ui.nav_next, "Next file")
-		map("<leader>hp", ui.nav_prev, "Previous file")
+		map("<leader>hs", ui.nav_next, "Next file")
+		map("<leader>ha", ui.nav_prev, "Previous file")
 		map("<C-e>", "<cmd>Telescope harpoon-core marks<cr>", "Telescope menu")
 	end,
 }
