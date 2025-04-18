@@ -94,4 +94,5 @@ return {
       scope = 'line',
     },
   },
+  { 'mrjones2014/smart-splits.nvim' },
 }
