@@ -95,4 +95,5 @@ return {
     },
   },
   { 'mrjones2014/smart-splits.nvim' },
+  { 'mfussenegger/nvim-jdtls' },
 }
