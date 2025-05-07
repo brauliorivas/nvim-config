@@ -26,6 +26,7 @@ return {
 			cpp = { "clang-format" },
 			htmldjango = { "djlint" },
 			clojure = { "cljfmt" },
+      java = { "google-java-format" }
 		},
 		-- Set default options
 		default_format_opts = {
