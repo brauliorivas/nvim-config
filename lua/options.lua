@@ -10,7 +10,7 @@ vim.o.scrolloff = 6
 vim.o.guicursor = 'i-c-ci-cr-r:blinkon1'
 
 vim.o.conceallevel = 1
-vim.opt.expandtab = true      -- Use spaces instead of tabs
-vim.opt.shiftwidth = 4        -- Size of indent
-vim.opt.tabstop = 4           -- Number of spaces tabs count for
-vim.opt.softtabstop = 4       -- Editing uses this width
+vim.opt.expandtab = false
+vim.opt.shiftwidth = 4
+vim.opt.tabstop = 4
+vim.opt.softtabstop = 4
