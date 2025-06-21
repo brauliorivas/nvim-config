@@ -17,6 +17,7 @@ return {
         'html',
         'python',
         'java',
+        'clojure',
       },
       sync_install = false,
       highlight = { enable = true },
