@@ -15,4 +15,3 @@ vim.o.softtabstop = 0
 vim.o.expandtab = true
 vim.o.smartindent = true
 vim.o.conceallevel = 1
-
