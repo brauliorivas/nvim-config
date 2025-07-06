@@ -18,6 +18,7 @@ return {
         'python',
         'java',
         'clojure',
+        'json',
       },
       sync_install = false,
       highlight = { enable = true },

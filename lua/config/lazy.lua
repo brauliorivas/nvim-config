@@ -384,5 +384,35 @@ vim.keymap.set('n', '<leader><leader>k', require('smart-splits').swap_buf_up)
 vim.keymap.set('n', '<leader><leader>l', require('smart-splits').swap_buf_right)
 
 require('render-markdown').setup({
-    completions = { blink = { enabled = true } },
+  completions = { blink = { enabled = true } },
 })
+
+local function my_on_attach(bufnr)
+  local api = require 'nvim-tree.api'
+
+  local function options(desc)
+    return { desc = 'nvim-tree: ' .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
+  end
+
+  -- default mappings
+  api.config.mappings.default_on_attach(bufnr)
+
+  -- custom mappings
+  vim.keymap.set('n', '<leader><leader>t', api.tree.open, options('open'))
+end
+
+require('nvim-tree').setup {
+  sort = {
+    sorter = 'case_sensitive',
+  },
+  view = {
+    width = 30,
+  },
+  renderer = {
+    group_empty = true,
+  },
+  filters = {
+    dotfiles = true,
+  },
+  on_attach = my_on_attach,
+}
