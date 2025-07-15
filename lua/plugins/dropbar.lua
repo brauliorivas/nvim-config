@@ -5,6 +5,7 @@ return {
 		"nvim-telescope/telescope-fzf-native.nvim",
 		build = "make",
 	},
+  tag = "v14.1.0",
 	config = function()
 		local dropbar_api = require("dropbar.api")
 		vim.keymap.set("n", "<Leader>;", dropbar_api.pick, { desc = "Pick symbols in winbar" })
