@@ -19,6 +19,7 @@ return {
         'java',
         'clojure',
         'json',
+        'cpp',
       },
       sync_install = false,
       highlight = { enable = true },
