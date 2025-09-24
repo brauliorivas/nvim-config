@@ -358,7 +358,6 @@ lspconfig.pylsp.setup {
   },
 }
 lspconfig.clojure_lsp.setup {}
-lspconfig.ts_ls.setup {}
 lspconfig.html.setup {
   filetypes = { 'html', 'htmldjango', 'templ' },
 }
