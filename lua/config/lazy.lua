@@ -307,9 +307,8 @@ vim.diagnostic.config({
   severity_sort = true,
 })
 
-local lspconfig = require('lspconfig')
-lspconfig.clangd.setup {}
-lspconfig.lua_ls.setup {
+vim.lsp.config('clangd', {})
+vim.lsp.config('lua_ls', {
   on_init = function(client)
     if client.workspace_folders then
       local path = client.workspace_folders[1].name
@@ -344,8 +343,8 @@ lspconfig.lua_ls.setup {
   settings = {
     Lua = {},
   },
-}
-lspconfig.pylsp.setup {
+})
+vim.lsp.config('pylsp', {
   settings = {
     pylsp = {
       plugins = {
@@ -356,11 +355,12 @@ lspconfig.pylsp.setup {
       },
     },
   },
-}
-lspconfig.clojure_lsp.setup {}
-lspconfig.html.setup {
+})
+vim.lsp.config('clojure_lsp', {})
+vim.lsp.config('html', {
   filetypes = { 'html', 'htmldjango', 'templ' },
-}
+})
+vim.lsp.enable({ 'gleam', 'clangd', 'html', 'clojure_lsp', 'pylsp', 'lua_ls' })
 
 -- recommended mappings
 -- resizing splits
