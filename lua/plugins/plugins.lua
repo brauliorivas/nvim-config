@@ -46,7 +46,6 @@ return {
     'mbbill/undotree',
     config = function()
       vim.keymap.set('n', '<leader>u', vim.cmd.UndotreeToggle)
-      print(2)
       if vim.fn.has('persistent_undo') == 1 then
         local target_path = vim.fn.expand('~/.undodir')
 
@@ -163,5 +162,73 @@ return {
     dependencies = {
       'nvim-lua/plenary.nvim',
     },
+  },
+  {
+    '3rd/image.nvim',
+    build = false, -- so that it doesn't build the rock https://github.com/3rd/image.nvim/issues/91#issuecomment-2453430239
+    opts = {
+      processor = 'magick_cli',
+    },
+  },
+  {
+    '3rd/diagram.nvim',
+    dependencies = {
+      { '3rd/image.nvim' }, -- you'd probably want to configure image.nvim manually instead of doing this
+    },
+    opts = { -- you can just pass {}, defaults below
+      events = {
+        render_buffer = { 'InsertLeave', 'BufWinEnter', 'TextChanged' },
+        clear_buffer = { 'BufLeave' },
+      },
+      renderer_options = {
+        plantuml = {
+          charset = nil,
+          cli_args = nil, -- nil | { "-Djava.awt.headless=true" } | ...
+        },
+      },
+    },
+  },
+  ---@type LazySpec
+  {
+    'mikavilpas/yazi.nvim',
+    version = '*', -- use the latest stable version
+    event = 'VeryLazy',
+    dependencies = {
+      { 'nvim-lua/plenary.nvim', lazy = true },
+    },
+    keys = {
+      {
+        '<leader>cf',
+        mode = { 'n', 'v' },
+        '<cmd>Yazi<cr>',
+        desc = 'Open yazi at the current file',
+      },
+      {
+        -- Open in the current working directory
+        '<leader>cw',
+        '<cmd>Yazi cwd<cr>',
+        desc = "Open the file manager in nvim's working directory",
+      },
+      {
+        '<c-up>',
+        '<cmd>Yazi toggle<cr>',
+        desc = 'Resume the last yazi session',
+      },
+    },
+    ---@type YaziConfig | {}
+    opts = {
+      -- if you want to open yazi instead of netrw, see below for more info
+      open_for_directories = false,
+      keymaps = {
+        show_help = '<f1>',
+      },
+    },
+    -- 👇 if you use `open_for_directories=true`, this is recommended
+    init = function()
+      -- mark netrw as loaded so it's not loaded at all.
+      --
+      -- More details: https://github.com/mikavilpas/yazi.nvim/issues/802
+      vim.g.loaded_netrwPlugin = 1
+    end,
   },
 }
