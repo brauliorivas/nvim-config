@@ -360,7 +360,7 @@ vim.lsp.config('clojure_lsp', {})
 vim.lsp.config('html', {
   filetypes = { 'html', 'htmldjango', 'templ' },
 })
-vim.lsp.enable({ 'gleam', 'clangd', 'html', 'clojure_lsp', 'pylsp', 'lua_ls' })
+vim.lsp.enable({ 'gleam', 'clangd', 'html', 'clojure_lsp', 'pylsp', 'lua_ls' , 'tinymist'})
 
 -- recommended mappings
 -- resizing splits

@@ -20,6 +20,7 @@ return {
         'clojure',
         'json',
         'cpp',
+        'typst',
       },
       sync_install = false,
       highlight = { enable = true },
