@@ -24,6 +24,7 @@ return {
         'astro',
         'css',
         'typescript',
+        'go',
       },
       sync_install = false,
       highlight = { enable = true },
