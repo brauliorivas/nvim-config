@@ -28,6 +28,7 @@ return {
       clojure = { 'cljfmt' },
       java = { 'google-java-format' },
       typst = { 'typstyle', lsp_format = 'prefer' },
+      nix = { 'nixfmt' }
     },
     -- Set default options
     default_format_opts = {

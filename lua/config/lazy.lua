@@ -388,6 +388,7 @@ vim.lsp.enable({
   'tinymist',
   'astro',
   'gopls',
+  'nixd',
 })
 vim.api.nvim_create_autocmd('BufWritePre', {
   pattern = '*.go',
