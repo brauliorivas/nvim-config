@@ -231,4 +231,11 @@ return {
       vim.g.loaded_netrwPlugin = 1
     end,
   },
+  {
+    'cljoly/telescope-repo.nvim',
+    dependencies = { 'nvim-lua/plenary.nvim', 'nvim-telescope/telescope.nvim' },
+  },
+  {
+    'airblade/vim-rooter'
+  },
 }

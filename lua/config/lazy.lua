@@ -241,11 +241,19 @@ require('telescope').setup({
       case_mode = 'smart_case', -- or "ignore_case" or "respect_case"
       -- the default case_mode is "smart_case"
     },
+    repo = {
+      search_dirs = {
+        '~',
+        '/etc/nixos',
+        '/shared',
+      },
+    },
   },
 })
 -- To get fzf loaded and working with telescope, you need to call
 -- load_extension, somewhere after setup function:
 require('telescope').load_extension('fzf')
+require 'telescope'.load_extension 'repo'
 
 require('gitsigns').setup({
   current_line_blame = true,
@@ -298,6 +306,10 @@ map('n', '<leader>bn', '<Cmd>BufferOrderByName<CR>', opts)
 map('n', '<leader>bd', '<Cmd>BufferOrderByDirectory<CR>', opts)
 map('n', '<leader>bl', '<Cmd>BufferOrderByLanguage<CR>', opts)
 map('n', '<leader>bw', '<Cmd>BufferOrderByWindowNumber<CR>', opts)
+
+map('n', '<leader>rl', ':Telescope repo list<CR>', { noremap = true, silent = true })
+
+map('n', '<leader>e', ':NvimTreeToggle<CR>', { noremap = true, silent = true })
 
 vim.diagnostic.config({
   virtual_text = true,
@@ -465,6 +477,7 @@ require('nvim-tree').setup {
     dotfiles = true,
   },
   on_attach = my_on_attach,
+  sync_root_with_cwd = true,
 }
 
 require('image').setup({
