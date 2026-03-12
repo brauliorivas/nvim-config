@@ -19,3 +19,5 @@ vim.o.conceallevel = 1
 vim.o.foldlevel = 99             -- open all folds by default
 vim.o.foldlevelstart = 99        -- nothing folded on file open
 vim.o.foldcolumn = '1'
+
+vim.o.showtabline = 2

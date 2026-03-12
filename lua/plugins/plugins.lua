@@ -236,6 +236,20 @@ return {
     dependencies = { 'nvim-lua/plenary.nvim', 'nvim-telescope/telescope.nvim' },
   },
   {
-    'airblade/vim-rooter'
+    'airblade/vim-rooter',
+  },
+  {
+    'nanozuki/tabby.nvim',
+  },
+  { 'tiagovla/scope.nvim', config = true },
+  {
+    'LukasPietzschmann/telescope-tabs',
+    config = function()
+      require('telescope').load_extension 'telescope-tabs'
+      require('telescope-tabs').setup {
+        -- Your custom config :^)
+      }
+    end,
+    dependencies = { 'nvim-telescope/telescope.nvim' },
   },
 }

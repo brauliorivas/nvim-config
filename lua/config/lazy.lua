@@ -49,16 +49,21 @@ require('toggleterm').setup({
 
 function _G.set_terminal_keymaps()
   local opts = { buffer = 0 }
-  vim.keymap.set('t', '<esc>', [[<C-\><C-n>]], opts)
+  vim.keymap.set('t', '<C-x>', [[<C-\><C-n>]], opts)
   -- vim.keymap.set('t', 'jk', [[<C-\><C-n>]], opts)
   vim.keymap.set('t', '<C-h>', [[<Cmd>wincmd h<CR>]], opts)
   vim.keymap.set('t', '<C-j>', [[<Cmd>wincmd j<CR>]], opts)
   vim.keymap.set('t', '<C-k>', [[<Cmd>wincmd k<CR>]], opts)
-  vim.keymap.set('t', '<C-l>', [[<Cmd>wincmd l<CR>]], opts)
+  -- vim.keymap.set('t', '<C-l>', [[<Cmd>wincmd l<CR>]], opts)
   vim.keymap.set('t', '<C-w>', [[<C-\><C-n><C-w>]], opts)
 end
 
 vim.cmd('autocmd! TermOpen term://* lua set_terminal_keymaps()')
+
+vim.keymap.set("n", "<leader>tf", "<cmd>ToggleTerm direction=float<CR>")
+vim.keymap.set("n", "<leader>tv", "<cmd>ToggleTerm direction=vertical<CR>")
+vim.keymap.set("n", "<leader>th", "<cmd>ToggleTerm direction=horizontal<CR>")
+vim.keymap.set("n", "<leader>tt", "<cmd>ToggleTerm direction=tab<CR>")
 
 require('mini.indentscope').setup()
 
@@ -232,6 +237,8 @@ vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = 'Telescope buffers' 
 vim.keymap.set('n', '<leader>gs', builtin.git_status, { desc = 'Telescope buffers' })
 vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = 'Telescope help tags' })
 
+vim.keymap.set('n', '<leader>ft', ':Telescope telescope-tabs list_tabs<CR>', { desc = 'Telescope taps' })
+
 require('telescope').setup({
   extensions = {
     fzf = {
@@ -254,6 +261,7 @@ require('telescope').setup({
 -- load_extension, somewhere after setup function:
 require('telescope').load_extension('fzf')
 require 'telescope'.load_extension 'repo'
+require('telescope').load_extension('scope')
 
 require('gitsigns').setup({
   current_line_blame = true,
@@ -281,6 +289,8 @@ local diffview_close = function()
 end
 
 vim.keymap.set('n', '<leader>dfo', diffview_open, { desc = 'Open default diffview' })
+vim.keymap.set('n', '<leader>dfl', diffview_close, { desc = 'Open default diffview' })
+
 vim.keymap.set('n', '<leader>dfl', diffview_close, { desc = 'Open default diffview' })
 
 local map = vim.api.nvim_set_keymap
@@ -535,6 +545,46 @@ require('diagram').setup({
   },
 })
 
+local theme = {
+  -- fill = 'TabLineFill',
+  -- Also you can do this: fill = { fg='#f2e9de', bg='#907aa9', style='italic' }
+  fill = { fg = '#f2e9de', bg = '#907aa9', style = 'italic' },
+  head = 'TabLine',
+  current_tab = 'TabLineSel',
+  tab = 'TabLine',
+  win = 'TabLine',
+  tail = 'TabLine',
+}
+
+require('tabby').setup({})
+map('n', '<leader>ta', ':$tabnew<CR>', { noremap = true })
+map('n', '<leader>tc', ':tabclose<CR>', { noremap = true })
+map('n', '<leader>to', ':tabonly<CR>', { noremap = true })
+map('n', '<leader>tn', ':tabn<CR>', { noremap = true })
+map('n', '<leader>tp', ':tabp<CR>', { noremap = true })
+map('n', '<leader>tmp', ':-tabmove<CR>', { noremap = true })
+map('n', '<leader>tmn', ':+tabmove<CR>', { noremap = true })
+
+require 'barbar'.setup {
+  icons = {
+    button = '',
+    diagnostics = {
+      [vim.diagnostic.severity.ERROR] = { enabled = true, icon = 'ﬀ' },
+      [vim.diagnostic.severity.WARN] = { enabled = false },
+      [vim.diagnostic.severity.INFO] = { enabled = false },
+      [vim.diagnostic.severity.HINT] = { enabled = true },
+    },
+    gitsigns = {
+      added = { enabled = true, icon = '+' },
+      changed = { enabled = true, icon = '~' },
+      deleted = { enabled = true, icon = '-' },
+    },
+    -- Use a preconfigured buffer appearance— can be 'default', 'powerline', or 'slanted'
+    preset = 'slanted',
+  },
+}
+
+require('scope').setup({})
 require 'nvim-treesitter'.setup {
   -- Directory to install parsers and queries to (prepended to `runtimepath` to have priority)
   install_dir = vim.fn.stdpath('data') .. '/site',
