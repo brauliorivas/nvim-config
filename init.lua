@@ -1,19 +1,8 @@
--- disable netrw at the very start of your init.lua
-vim.g.loaded_netrw = 1
-vim.g.loaded_netrwPlugin = 1
-vim.opt.termguicolors = true
-
-require("config.lazy")
-require("remaps")
 require("options")
+require("config.lazy")
+require("lsp")
+require("remaps")
+require("autocmd")
 
-vim.o.background = "dark" -- or "light" for light mode
+vim.o.background = "dark"
 vim.cmd([[colorscheme gruvbox]])
-
-vim.api.nvim_create_autocmd("VimEnter", {
-  callback = function()
-    if vim.fn.argc() == 0 then
-      require("nvim-tree.api").tree.open()
-    end
-  end,
-})
