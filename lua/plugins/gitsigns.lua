@@ -46,16 +46,5 @@ return {
         end, { buffer = bufnr, desc = 'Preview git blame' })
       end,
     })
-
-    local diffview_open = function()
-      vim.cmd('DiffviewOpen')
-    end
-    local diffview_close = function()
-      vim.cmd('DiffviewClose')
-    end
-
-    local map = vim.keymap.set
-    map('n', '<leader>dfo', diffview_open, { desc = 'Open default diffview' })
-    map('n', '<leader>dfl', diffview_close, { desc = 'Open default diffview' })
   end,
 }
