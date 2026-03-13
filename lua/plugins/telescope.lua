@@ -9,7 +9,7 @@ return {
     { '<leader>ff', require('telescope.builtin').find_files, desc = 'Telescope Find Files' },
     { '<leader>fg', require('telescope.builtin').live_grep, desc = 'Telescope Live Grep' },
     { '<leader>fb', require('telescope.builtin').buffers, desc = 'Telescope Buffers' },
-    { '<leader>gs', require('telescope.builtin').git_status, desc = 'Telescope Git Status' },
+    -- { '<leader>gs', require('telescope.builtin').git_status, desc = 'Telescope Git Status' },
     { '<leader>fh', require('telescope.builtin').help_tags, desc = 'Telescope Help Tags' },
     { '<leader>ft', ':Telescope telescope-tabs list_tabs<CR>', desc = 'Telescope Tabs' },
   },
