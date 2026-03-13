@@ -20,7 +20,7 @@ return {
     -- Define your formatters
     formatters_by_ft = {
       lua = { 'stylua' },
-      python = { 'black' },
+      python = { 'autopep8' },
       javascript = { 'prettier', stop_after_first = true },
       c = { 'clang-format' },
       cpp = { 'clang-format' },
