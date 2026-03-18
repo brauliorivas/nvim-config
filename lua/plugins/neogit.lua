@@ -5,13 +5,32 @@ return {
     'sindrets/diffview.nvim',
     'nvim-telescope/telescope.nvim',
   },
-  opts = {},
+  opts = {
+    kind = 'replace',
+    disable_line_numbers = false,
+    commit_editor = {
+      kind = 'replace',
+    },
+    commit_select_view = {
+      kind = 'replace',
+    },
+    log_view = {
+      kind = 'replace',
+    },
+    reflog_view = {
+      kind = 'replace',
+    },
+    stash = {
+      kind = 'replace',
+    },
+    refs_view = {
+      kind = 'replace',
+    },
+  },
   keys = {
     {
       '<leader>gs',
-      function()
-        require('neogit').open()
-      end,
+      require('neogit').open,
       desc = 'Open Neogit',
     },
     { '<leader>gp', ':Neogit pull<CR>', desc = 'Neogit Pull', silent = true, noremap = true },
