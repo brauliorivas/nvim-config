@@ -1,6 +1,5 @@
 return {
   'akinsho/toggleterm.nvim',
-  version = '*',
   opts = {
     open_mapping = [[<M-t>]],
   },
@@ -21,9 +20,10 @@ return {
     })
   end,
   keys = {
-    { '<leader>tf', '<cmd>ToggleTerm direction=float<CR>', desc = 'Terminal float' },
-    { '<leader>tv', '<cmd>ToggleTerm direction=vertical<CR>', desc = 'Terminal vertical' },
-    { '<leader>th', '<cmd>ToggleTerm direction=horizontal<CR>', desc = 'Terminal horizontal' },
-    { '<leader>tt', '<cmd>ToggleTerm direction=tab<CR>', desc = 'Terminal tab' },
+    { '<leader>tf', '<cmd>TermNew direction=float<CR>', desc = 'Terminal float' },
+    { '<leader>tv', '<cmd>TermNew direction=vertical<CR>', desc = 'Terminal vertical' },
+    { '<leader>th', '<cmd>TermNew direction=horizontal<CR>', desc = 'Terminal horizontal' },
+    { '<leader>tt', '<cmd>TermNew direction=tab<CR>', desc = 'Terminal tab' },
+    { '<leader>ts', '<cmd>TermSelect<CR>', desc = 'Select terminal' },
   },
 }
