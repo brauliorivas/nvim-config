@@ -37,7 +37,7 @@ return {
   },
   keys = {
     {
-      'gf',
+      'ca',
       function()
         require('actions-preview').code_actions()
       end,

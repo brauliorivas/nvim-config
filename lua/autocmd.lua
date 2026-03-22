@@ -4,7 +4,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 	callback = function(args)
 		map("n", "rn", vim.lsp.buf.rename, { buffer = args.buf })
 		map("n", "K", vim.lsp.buf.hover, { buffer = args.buf })
-		map("n", "gff", vim.lsp.buf.format, { buffer = args.buf })
+		map("n", "gf", vim.lsp.buf.format, { buffer = args.buf })
 		map("n", "ga", vim.lsp.buf.code_action, { buffer = args.buf })
 		map("n", "gs", vim.lsp.buf.signature_help, { buffer = args.buf })
 	end,
