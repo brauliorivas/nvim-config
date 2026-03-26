@@ -1,20 +1,12 @@
 local map = vim.keymap.set
 
-vim.api.nvim_create_autocmd("LspAttach", {
-	callback = function(args)
-		map("n", "rn", vim.lsp.buf.rename, { buffer = args.buf })
-		map("n", "K", vim.lsp.buf.hover, { buffer = args.buf })
-		map("n", "gf", vim.lsp.buf.format, { buffer = args.buf })
-		map("n", "ga", vim.lsp.buf.code_action, { buffer = args.buf })
-		map("n", "gs", vim.lsp.buf.signature_help, { buffer = args.buf })
-	end,
-})
-
-vim.api.nvim_create_autocmd("VimEnter", {
-  callback = function()
-    if vim.fn.argc() == 0 then
-      require("nvim-tree.api").tree.open()
-    end
+vim.api.nvim_create_autocmd('LspAttach', {
+  callback = function(args)
+    map('n', 'rn', vim.lsp.buf.rename, { buffer = args.buf })
+    map('n', 'K', vim.lsp.buf.hover, { buffer = args.buf })
+    map('n', 'gf', vim.lsp.buf.format, { buffer = args.buf })
+    map('n', 'ga', vim.lsp.buf.code_action, { buffer = args.buf })
+    map('n', 'gs', vim.lsp.buf.signature_help, { buffer = args.buf })
   end,
 })
 
@@ -41,4 +33,4 @@ vim.api.nvim_create_autocmd('BufWritePre', {
   end,
 })
 
-vim.cmd("Emojify")
+vim.cmd('Emojify')

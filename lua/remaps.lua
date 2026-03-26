@@ -48,7 +48,4 @@ map('n', '<leader>bd', '<Cmd>BufferOrderByDirectory<CR>', opts)
 map('n', '<leader>bl', '<Cmd>BufferOrderByLanguage<CR>', opts)
 map('n', '<leader>bw', '<Cmd>BufferOrderByWindowNumber<CR>', opts)
 
--- List git repos
-map('n', '<leader>rl', ':Telescope repo list<CR>', { noremap = true, silent = true })
--- Toggle nvim-tree
-map('n', '<leader>e', ':NvimTreeToggle<CR>', { noremap = true, silent = true })
+map('n', '<leader>e', '<Cmd>Neotree<CR>')
