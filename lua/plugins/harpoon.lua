@@ -5,7 +5,6 @@ return {
 			default_action = nil,
 			delete_confirmation = false,
 		})
-		require("telescope").load_extension("harpoon-core")
 
 		---@param lhs string
 		---@param rhs string|function
@@ -25,11 +24,14 @@ return {
 		map("<C-n>", function() ui.nav_file(3) end, "Go to third file")
 		map("<C-s>", function() ui.nav_file(4) end, "Go to fourth file")
 		map("<leader>0", function() ui.nav_file(10) end, "Go to tenth file")
-		map("<leader>a", mark.add_file, "Add current file")
+		map("<leader>ha", mark.add_file, "Add current file")
 		map("<leader>hr", mark.rm_file, "Remove current file")
 		map("<leader>hu", ui.toggle_quick_menu, "Toggle UI")
-		map("<leader>hs", ui.nav_next, "Next file")
-		map("<leader>ha", ui.nav_prev, "Previous file")
-		map("<C-e>", "<cmd>Telescope harpoon-core marks<cr>", "Telescope menu")
+		map("<leader>hn", ui.nav_next, "Next file")
+		map("<leader>hp", ui.nav_prev, "Previous file")
+		map("<C-e>", function ()
+		  require("telescope").extensions["harpoon-core"].marks()
+      vim.cmd("stopinsert")
+		end, "Telescope menu")
 	end,
 }

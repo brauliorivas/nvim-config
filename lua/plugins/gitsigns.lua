@@ -13,7 +13,7 @@ return {
       on_attach = function(bufnr)
         vim.keymap.set(
           'n',
-          '<leader>hp',
+          '<leader>gh',
           require('gitsigns').preview_hunk,
           { buffer = bufnr, desc = 'Preview git hunk' }
         )
