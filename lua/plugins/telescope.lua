@@ -34,11 +34,13 @@ return {
     telescope.load_extension('scope')
     telescope.load_extension('harpoon-core')
     telescope.load_extension('zoxide')
+    telescope.load_extension('file_browser')
 
     local builtin = require('telescope.builtin')
     local map = vim.keymap.set
 
     map('n', '<leader>cd', telescope.extensions.zoxide.list)
+    map('n', '<leader>fw', telescope.extensions.file_browser.file_browser)
 
     vim.api.nvim_create_autocmd('LspAttach', {
       callback = function(args)
