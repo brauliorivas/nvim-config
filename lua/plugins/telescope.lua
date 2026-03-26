@@ -31,12 +31,14 @@ return {
     telescope.setup(opts)
 
     telescope.load_extension('fzf')
-    telescope.load_extension('repo')
     telescope.load_extension('scope')
     telescope.load_extension('harpoon-core')
+    telescope.load_extension('zoxide')
 
     local builtin = require('telescope.builtin')
     local map = vim.keymap.set
+
+    map('n', '<leader>cd', telescope.extensions.zoxide.list)
 
     vim.api.nvim_create_autocmd('LspAttach', {
       callback = function(args)
@@ -45,7 +47,6 @@ return {
         map('n', 'gI', builtin.lsp_implementations, { buffer = args.buf })
         map('n', 'gD', builtin.diagnostics, { buffer = args.buf })
         map('n', 'gi', builtin.lsp_incoming_calls, { buffer = args.buf })
-        map('n', 'go', builtin.lsp_outgoing_calls, { buffer = args.buf })
       end,
     })
   end,
