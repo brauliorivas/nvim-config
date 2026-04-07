@@ -30,6 +30,8 @@ map('n', '<leader>tmn', ':+tabmove<CR>', { noremap = true })
 local opts = { noremap = true, silent = true }
 map('n', '<A-,>', '<Cmd>BufferPrevious<CR>', opts)
 map('n', '<A-.>', '<Cmd>BufferNext<CR>', opts)
+map('n', '<leader>,', '<Cmd>BufferMovePrevious<CR>', opts)
+map('n', '<leader>.', '<Cmd>BufferMoveNext<CR>', opts)
 map('n', '<A-1>', '<Cmd>BufferGoto 1<CR>', opts)
 map('n', '<A-2>', '<Cmd>BufferGoto 2<CR>', opts)
 map('n', '<A-3>', '<Cmd>BufferGoto 3<CR>', opts)
