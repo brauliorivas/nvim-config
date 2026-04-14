@@ -27,6 +27,7 @@ return {
       'astro',
       'css',
       'typescript',
+      'tsx',
       'go',
       'nix',
       'zsh',
@@ -49,6 +50,7 @@ return {
     vim.api.nvim_create_autocmd('FileType', {
       pattern = table_concat(ts_languages, {
         'javascriptreact',
+        'typescriptreact',
       }),
       callback = function()
         vim.treesitter.start()

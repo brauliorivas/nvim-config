@@ -4,4 +4,5 @@ return {
   },
   { 'rcarriga/nvim-notify' },
   { 'mfussenegger/nvim-jdtls' },
+  { 'github/copilot.vim' },
 }
