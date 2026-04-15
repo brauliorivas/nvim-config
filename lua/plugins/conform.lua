@@ -20,7 +20,7 @@ return {
     -- Define your formatters
     formatters_by_ft = {
       lua = { 'stylua' },
-      python = { 'autopep8' },
+      python = { 'ruff_format', 'ruff_fix', 'ruff_organize_imports' },
       javascript = { 'prettier', stop_after_first = true },
       c = { 'clang-format' },
       cpp = { 'clang-format' },
@@ -28,7 +28,7 @@ return {
       clojure = { 'cljfmt' },
       java = { 'google-java-format' },
       typst = { 'typstyle', lsp_format = 'prefer' },
-      nix = { 'nixfmt' }
+      nix = { 'nixfmt' },
     },
     -- Set default options
     default_format_opts = {

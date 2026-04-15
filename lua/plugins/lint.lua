@@ -9,7 +9,7 @@ return {
       c = { 'clangtidy' },
       javascript = { 'eslint' },
       javascriptreact = { 'eslint' },
-      python = { 'flake8' },
+      python = { 'ruff' },
     }
 
     local djlint = lint.linters.djlint
