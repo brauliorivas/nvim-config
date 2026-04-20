@@ -63,6 +63,11 @@ return {
 
     vim.api.nvim_create_autocmd('LspAttach', {
       callback = function(args)
+        local ft = vim.bo[args.buf].filetype
+
+        if ft == 'copilot-chat' then
+          return
+        end
         map('n', 'gd', builtin.lsp_definitions, { buffer = args.buf })
         map('n', 'gr', builtin.lsp_references, { buffer = args.buf })
         map('n', 'gI', builtin.lsp_implementations, { buffer = args.buf })
